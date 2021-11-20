@@ -1,3 +1,4 @@
+import { formatNumber } from "../utils"
 import type { Labels, Entry } from "../types"
 
 type Props = {
@@ -17,9 +18,11 @@ const CurrenciesTable = ({ headers, entries }: Props) => {
       </thead>
       <tbody>
         {entries.map((entry) => (
-          <tr key={entry.kód}>
-            {Object.values(entry).map((value) => (
-              <td key={value}>{value}</td>
+          <tr key={entry.currencyCode}>
+            {Object.entries(entry).map(([key, value]) => (
+              <td key={key}>
+                {typeof value === "number" ? formatNumber(value) : value}
+              </td>
             ))}
           </tr>
         ))}
