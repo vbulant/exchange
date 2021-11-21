@@ -21,9 +21,6 @@ const ratesSchema = {
           "kód": {
             "type": "string"
           },
-          "množství": {
-            "type": "number"
-          },
           "měna": {
             "type": "string"
           },

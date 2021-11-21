@@ -15,9 +15,8 @@ const parseResponseText = (text: string): Data => {
     .map((entry) => ({
       country: entry[0],
       currency: entry[1],
-      amount: parseInt(entry[2], 10),
       currencyCode: entry[3],
-      rate: parseFloat(entry[4].replace(",", ".")),
+      rate: parseFloat(entry[4].replace(",", ".")) / parseInt(entry[2], 10),
     }))
   return { date, labels, entries }
 }
