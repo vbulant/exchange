@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react"
 
+import useConvertAmount from "./useConvertAmount"
 import { formatNumber } from "../../utils"
 import type { Entry } from "../../types"
 
@@ -19,26 +20,21 @@ const Converter = ({ entries, targetCurrencyCode, setTargetCurrencyCode }: Props
 
   const [amount, setAmount] = useState("1")
   const targetCurrency = getCurrency(targetCurrencyCode)
-
-  if (!targetCurrency) {
-    return null
-  }
-
-  const value = parseFloat(amount) / targetCurrency.rate
-  const formattedValue = formatNumber(value)
+  const value = useConvertAmount(amount, targetCurrency)
 
   return (
     <form style={{ margin: "0 0 2rem" }}>
-      {/* todo validation, support comma */}
       <input
         value={amount}
         min={1}
         onChange={(e) => setAmount(e.target.value)}
         aria-label="Množství Kč"
+        // todo styled
+        style={{ border: !value ? "1px solid red" : undefined }}
       />
       {" Kč"}
       {" = "}
-      <span aria-label={`Hodnota v ${targetCurrencyCode}`}>{formattedValue}</span>
+      <span aria-label={`Hodnota v ${targetCurrencyCode}`}>{value ? formatNumber(value) : "?"}</span>
       <select
         onChange={(e) => setTargetCurrencyCode(e.target.value)}
         value={targetCurrencyCode}
