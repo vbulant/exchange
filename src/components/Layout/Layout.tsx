@@ -1,6 +1,7 @@
 import Head from "next/head"
 
-import ErrorBoundary from "../components/ErrorBoundary"
+import ErrorBoundary from "../ErrorBoundary"
+import { Container } from "./Layout.styled"
 
 type Props = {
   children: React.ReactNode
@@ -10,13 +11,13 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <Head>
-        <title>Exchange</title>
+        <title>Kurzovní lístek</title>
       </Head>
-      <main>
+      <Container>
         <ErrorBoundary>
           {children}
         </ErrorBoundary>
-      </main>
+      </Container>
     </>
   )
 }

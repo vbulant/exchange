@@ -1,7 +1,7 @@
 import { useState } from "react"
 import type { NextPage } from "next"
 
-import Layout from "../components/Layout"
+import Layout from "../components/Layout/Layout"
 import RatesFetcher from "../components/RatesFetcher/RatesFetcher"
 import Converter from "../components/Converter/Converter"
 import CurrenciesTable from "../components/CurrenciesTable"
