@@ -37,7 +37,7 @@ const Converter = ({
     [currencies],
   )
 
-  const [amount, setAmount] = useState("1 000")
+  const [amount, setAmount] = useState("1000")
   const targetCurrency = getCurrency(targetCurrencyCode)
   const value = useConvertAmount(amount, targetCurrency)
   const hasError = amount.length > 0 && !value
