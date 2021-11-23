@@ -32,7 +32,7 @@ const Converter = ({
 }: Props) => {
   const getCurrency = useCallback(
     (currencyCode: string) => {
-      return currencies.find((entry) => entry.currencyCode === currencyCode)
+      return currencies.find((currency) => currency.currencyCode === currencyCode)
     },
     [currencies],
   )

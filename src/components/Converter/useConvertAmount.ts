@@ -1,4 +1,4 @@
-import type { Entry } from "../../types"
+import type { Currency } from "../../types"
 
 const parse = (amount: string): number => {
   const sanitizedAmount = amount.replace(",", ".").replace(/\s+/g, "")
@@ -9,7 +9,7 @@ const validate = (amount: number): boolean => {
   return amount.toString().length > 0 && !isNaN(amount)
 }
 
-const useConvertAmount = (amount: string, targetCurrency?: Entry): number | null => {
+const useConvertAmount = (amount: string, targetCurrency?: Currency): number | null => {
   if (!targetCurrency) {
     return null
   }
