@@ -83,14 +83,15 @@ export const Value = styled.strong`
 `
 
 export const SelectCurrencyTo = styled.select`
-  border: var(--border-width) solid var(--color-action-border);
+  border: var(--border-width) solid var(--color-action);
   border-radius: var(--border-radius);
   padding: 0.4rem;
   font-size: 1.125rem;
   font-weight: inherit;
   color: var(--color-action);
   background: transparent;
-  outline: none;
+  appearance: none;
+  cursor: pointer;
   transition: border-color 0.2s ease-in-out;
 
   &:focus {
