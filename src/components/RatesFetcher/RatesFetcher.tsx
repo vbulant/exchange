@@ -1,8 +1,8 @@
 import { useQuery } from "react-query"
 
 import fetchRates from "./fetchRates"
-import Loading from "../Loading"
-import ErrorMessage from "../ErrorMessage"
+import Loading from "../Loading/Loading"
+import Error from "../Error/Error"
 import type { Data } from "../../types"
 
 type Props = {
@@ -17,7 +17,7 @@ const RatesFetcher = ({ children }: Props) => {
   }
 
   if (error ?? !data) {
-    return <ErrorMessage />
+    return <Error />
   }
 
   return children(data)

@@ -9,8 +9,8 @@ const styles = createGlobalStyle`
     --color-action: #1d7ec3;
     --color-action-border: #bcd2e1;
     --color-focus: #00bcf5;
+    --color-error: #e0002d;
     --color-error-bg: #ffebef;
-    --color-error-border: #e0002d;
 
     --border-width: 0.1875rem;
     --border-width-sm: 0.125rem;

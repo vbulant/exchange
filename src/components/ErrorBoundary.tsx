@@ -1,6 +1,6 @@
 import React from "react"
 
-import ErrorMessage from "./ErrorMessage"
+import Error from "./Error/Error"
 
 type Props = {}
 
@@ -19,7 +19,7 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 
   render() {
-    return this.state.hasError ? <ErrorMessage /> : this.props.children
+    return this.state.hasError ? <Error /> : this.props.children
   }
 }
 

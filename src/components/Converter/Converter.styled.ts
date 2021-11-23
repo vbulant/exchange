@@ -56,7 +56,7 @@ export const Input = styled.input<{ hasError: boolean }>`
     css`
       &,
       &:focus {
-        border-color: var(--color-error-border);
+        border-color: var(--color-error);
         background-color: var(--color-error-bg);
       }
     `}
