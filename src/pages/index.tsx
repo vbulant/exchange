@@ -1,16 +1,24 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
+import Head from "next/head"
 import type { NextPage } from "next"
 
-import Layout from "../components/Layout/Layout"
 import RatesFetcher from "../components/RatesFetcher/RatesFetcher"
 import Converter from "../components/Converter/Converter"
-import CurrenciesTable from "../components/CurrenciesTable"
+import CurrenciesTable from "../components/CurrenciesTable/CurrenciesTable"
 
 const Home: NextPage = () => {
+  const [isCurrenciesTableExpanded, setIsCurrenciesTableExpanded] = useState(false)
   const [targetCurrencyCode, setTargetCurrencyCode] = useState<string>("USD")
 
+  const handleToggleClick = useCallback(() => {
+    setIsCurrenciesTableExpanded(!isCurrenciesTableExpanded)
+  }, [isCurrenciesTableExpanded])
+
   return (
-    <Layout>
+    <>
+      <Head>
+        <title>Kurzovní lístek</title>
+      </Head>
       <RatesFetcher>
         {(data) => (
           <>
@@ -19,17 +27,21 @@ const Home: NextPage = () => {
               entries={data.entries}
               targetCurrencyCode={targetCurrencyCode}
               setTargetCurrencyCode={setTargetCurrencyCode}
+              onToggleClick={handleToggleClick}
+              isCollapsed={isCurrenciesTableExpanded}
             />
-            <h1>Kurzovní lístek {data.date}</h1>
             <CurrenciesTable
               headers={data.labels}
               entries={data.entries}
+              date={data.date}
+              isExpanded={isCurrenciesTableExpanded}
               setTargetCurrencyCode={setTargetCurrencyCode}
+              onToggleClick={handleToggleClick}
             />
           </>
         )}
       </RatesFetcher>
-    </Layout>
+    </>
   )
 }
 
