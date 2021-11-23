@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 
-import { formatNumber } from "../../utils"
+import { formatNumber, formatDate } from "../../utils"
 import { Container, Header, Title, Date, Table, Thead, Tbody } from "./CurrenciesTable.styled"
 import type { Currency } from "../../types"
 
@@ -31,8 +31,7 @@ const CurrenciesTable = ({
     <Container isExpanded={isExpanded}>
       <Header>
         <Title>Kurzovní lístek</Title>
-        {/* TODO pass neutral date from api, format to locale here, add datetime attr */}
-        <Date>{date}</Date>
+        <Date dateTime={date}>{formatDate(date)}</Date>
       </Header>
       <Table>
         <Thead>

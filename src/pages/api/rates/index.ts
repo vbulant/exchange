@@ -4,11 +4,16 @@ import { validate } from "jsonschema"
 import schema from "./schema"
 import type { Data } from "../../../types"
 
+const parseDate = (date: string): string => {
+  const [day, month, year] = date.split(".")
+  return `${year}-${month}-${day}`
+}
+
 // response text is expected in the documented format:
 // https://www.cnb.cz/cs/casto-kladene-dotazy/Kurzy-devizoveho-trhu-na-www-strankach-CNB/
 const parseResponseText = (text: string): Data => {
   const [headerRow, , ...currenciesRows] = text.split("\n").filter(Boolean)
-  const [date] = headerRow.replace(/\./g, ".\xa0").split(" ")
+  const [rawDate] = headerRow.split(" ")
   const currencies = currenciesRows
     .map((line) => line.split("|"))
     .map((currency) => ({
@@ -17,7 +22,10 @@ const parseResponseText = (text: string): Data => {
       currencyCode: currency[3],
       rate: parseFloat(currency[4].replace(",", ".")) / parseInt(currency[2], 10),
     }))
-  return { date, currencies }
+  return {
+    date: parseDate(rawDate),
+    currencies,
+  }
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<string>) {
