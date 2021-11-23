@@ -2,21 +2,30 @@ import { useCallback } from "react"
 
 import { formatNumber } from "../../utils"
 import { Container, Header, Title, Date, Table, Thead, Tbody } from "./CurrenciesTable.styled"
-import type { Entry } from "../../types"
+import type { Currency } from "../../types"
 
 type Props = {
-  entries: Entry[]
+  currencies: Currency[]
   date: string
   isExpanded: boolean
   setTargetCurrencyCode: (currencyCode: string) => void
   onToggleClick: () => void
 }
 
-const CurrenciesTable = ({ entries, setTargetCurrencyCode, date, isExpanded, onToggleClick }: Props) => {
-  const handleCurrencyClick = useCallback((currencyCode: string) => {
-    setTargetCurrencyCode(currencyCode)
-    onToggleClick()
-  }, [onToggleClick, setTargetCurrencyCode])
+const CurrenciesTable = ({
+  currencies,
+  setTargetCurrencyCode,
+  date,
+  isExpanded,
+  onToggleClick,
+}: Props) => {
+  const handleCurrencyClick = useCallback(
+    (currencyCode: string) => {
+      setTargetCurrencyCode(currencyCode)
+      onToggleClick()
+    },
+    [onToggleClick, setTargetCurrencyCode],
+  )
 
   return (
     <Container isExpanded={isExpanded}>
@@ -33,12 +42,15 @@ const CurrenciesTable = ({ entries, setTargetCurrencyCode, date, isExpanded, onT
           </tr>
         </Thead>
         <Tbody>
-          {entries.map((entry) => (
-            <tr key={entry.currencyCode} onClick={() => handleCurrencyClick(entry.currencyCode)}>
+          {currencies.map((currency) => (
+            <tr
+              key={currency.currencyCode}
+              onClick={() => handleCurrencyClick(currency.currencyCode)}
+            >
               <th>
-                {entry.country} – {entry.currency} ({entry.currencyCode})
+                {currency.country} – {currency.currency} ({currency.currencyCode})
               </th>
-              <td>{formatNumber(entry.rate)}</td>
+              <td>{formatNumber(currency.rate)}</td>
             </tr>
           ))}
         </Tbody>

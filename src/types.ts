@@ -1,4 +1,4 @@
-export type Entry = {
+export type Currency = {
   readonly rate: number
   readonly currencyCode: string
   readonly currency: string
@@ -7,5 +7,5 @@ export type Entry = {
 
 export type Data = {
   readonly date: string
-  readonly entries: Entry[]
+  readonly currencies: Currency[]
 }

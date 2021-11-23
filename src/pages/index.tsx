@@ -22,16 +22,15 @@ const Home: NextPage = () => {
       <RatesFetcher>
         {(data) => (
           <>
-            {/* TODO improve naming – entries too ambiguous */}
             <Converter
-              entries={data.entries}
+              currencies={data.currencies}
               targetCurrencyCode={targetCurrencyCode}
               setTargetCurrencyCode={setTargetCurrencyCode}
               onToggleClick={handleToggleClick}
               isCollapsed={isCurrenciesTableExpanded}
             />
             <CurrenciesTable
-              entries={data.entries}
+              currencies={data.currencies}
               date={data.date}
               isExpanded={isCurrenciesTableExpanded}
               setTargetCurrencyCode={setTargetCurrencyCode}

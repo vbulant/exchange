@@ -2,7 +2,7 @@ import { useCallback, useState } from "react"
 
 import useConvertAmount from "./useConvertAmount"
 import { formatNumber } from "../../utils"
-import type { Entry } from "../../types"
+import type { Currency } from "../../types"
 import {
   Container,
   Form,
@@ -16,7 +16,7 @@ import {
 } from "./Converter.styled"
 
 type Props = {
-  entries: readonly Entry[]
+  currencies: readonly Currency[]
   targetCurrencyCode: string
   setTargetCurrencyCode: (currencyCode: string) => void
   onToggleClick: () => void
@@ -24,7 +24,7 @@ type Props = {
 }
 
 const Converter = ({
-  entries,
+  currencies,
   targetCurrencyCode,
   setTargetCurrencyCode,
   onToggleClick,
@@ -32,9 +32,9 @@ const Converter = ({
 }: Props) => {
   const getCurrency = useCallback(
     (currencyCode: string) => {
-      return entries.find((entry) => entry.currencyCode === currencyCode)
+      return currencies.find((entry) => entry.currencyCode === currencyCode)
     },
-    [entries],
+    [currencies],
   )
 
   const [amount, setAmount] = useState("100")
@@ -70,7 +70,7 @@ const Converter = ({
             value={targetCurrencyCode}
             aria-label="měna"
           >
-            {entries.map(({ currencyCode }) => {
+            {currencies.map(({ currencyCode }) => {
               return (
                 <option key={currencyCode} value={currencyCode}>
                   {currencyCode}

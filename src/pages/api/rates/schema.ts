@@ -4,7 +4,7 @@ const ratesSchema = {
     "date": {
       "type": "string"
     },
-    "entries": {
+    "currencies": {
       "type": "array",
       "items": {
         "type": "object",
