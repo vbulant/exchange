@@ -40,7 +40,7 @@ const Converter = ({
   const [amount, setAmount] = useState("1000")
   const targetCurrency = getCurrency(targetCurrencyCode)
   const value = useConvertAmount(amount, targetCurrency)
-  const hasError = amount.length > 0 && !value
+  const hasError = amount.length > 0 && value === null
 
   const handleSelectCurrency = useCallback(
     (e: React.SyntheticEvent<HTMLSelectElement>) => setTargetCurrencyCode(e.currentTarget.value),
