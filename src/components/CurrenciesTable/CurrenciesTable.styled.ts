@@ -1,11 +1,13 @@
 import styled from "styled-components"
 
 export const Container = styled.div<{ isExpanded: boolean }>`
-  width: max-content;
+  width: fit-content;
   max-height: ${({ isExpanded }) => (isExpanded ? "500vh" : 0)};
   margin: 0 auto;
   border: var(--border-width-sm) solid #ccc;
-  border-radius: var(--border-radius);
+  border-bottom-width: 0;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
   overflow: hidden;
   pointer-events: ${({ isExpanded }) => (isExpanded ? "auto" : "none")};
   opacity: ${({ isExpanded }) => (isExpanded ? 1 : 0)};

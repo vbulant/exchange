@@ -4,7 +4,7 @@ export const Container = styled.div<{ isCollapsed: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: ${({ isCollapsed }) => (isCollapsed ? "5vh" : "calc(47vh - 10rem)")} 0;
+  margin: ${({ isCollapsed }) => (isCollapsed ? "5vh" : "calc(47vh - 10rem)")} 1rem;
   transition: margin var(--duration-toggle) var(--easing-toggle);
 `
 
@@ -13,7 +13,7 @@ export const Form = styled.form`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 0 0 1.25rem;
+  margin: 2rem 0 1.25rem;
   font-size: 2rem;
   font-weight: 600;
 `
@@ -32,7 +32,7 @@ export const Section = styled.div`
 `
 
 export const Input = styled.input<{ hasError: boolean }>`
-  width: 7rem;
+  width: 9rem;
   margin: -0.5rem 0.75rem -0.5rem 0;
   padding: 0.5rem 0.75rem;
   border: 0;
@@ -105,5 +105,5 @@ export const Toggle = styled.button.attrs({ type: "button" })`
   cursor: pointer;
   color: var(--color-action);
   text-decoration: underline;
-  font-size: 0.875rem;
+  font-size: 1rem;
 `
