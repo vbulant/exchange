@@ -2,10 +2,9 @@ import { useCallback } from "react"
 
 import { formatNumber } from "../../utils"
 import { Container, Header, Title, Date, Table, Thead, Tbody } from "./CurrenciesTable.styled"
-import type { Labels, Entry } from "../../types"
+import type { Entry } from "../../types"
 
 type Props = {
-  headers: Labels
   entries: Entry[]
   date: string
   isExpanded: boolean
@@ -13,7 +12,7 @@ type Props = {
   onToggleClick: () => void
 }
 
-const CurrenciesTable = ({ headers, entries, setTargetCurrencyCode, date, isExpanded, onToggleClick }: Props) => {
+const CurrenciesTable = ({ entries, setTargetCurrencyCode, date, isExpanded, onToggleClick }: Props) => {
   const handleCurrencyClick = useCallback((currencyCode: string) => {
     setTargetCurrencyCode(currencyCode)
     onToggleClick()

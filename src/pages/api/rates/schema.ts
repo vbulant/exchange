@@ -4,12 +4,6 @@ const ratesSchema = {
     "date": {
       "type": "string"
     },
-    "labels": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
     "entries": {
       "type": "array",
       "items": {

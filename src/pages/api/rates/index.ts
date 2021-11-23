@@ -7,9 +7,8 @@ import type { Data } from "../../../types"
 // response text is expected in the documented format:
 // https://www.cnb.cz/cs/casto-kladene-dotazy/Kurzy-devizoveho-trhu-na-www-strankach-CNB/
 const parseResponseText = (text: string): Data => {
-  const [headerRow, labelsRow, ...currencies] = text.split("\n").filter(Boolean)
+  const [headerRow, , ...currencies] = text.split("\n").filter(Boolean)
   const [date] = headerRow.replace(/\./g, ".\xa0").split(" ")
-  const labels = labelsRow.split("|")
   const entries = currencies
     .map((line) => line.split("|"))
     .map((entry) => ({
@@ -18,7 +17,7 @@ const parseResponseText = (text: string): Data => {
       currencyCode: entry[3],
       rate: parseFloat(entry[4].replace(",", ".")) / parseInt(entry[2], 10),
     }))
-  return { date, labels, entries }
+  return { date, entries }
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<string>) {

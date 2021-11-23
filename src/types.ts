@@ -1,5 +1,3 @@
-export type Labels = string[]
-
 export type Entry = {
   readonly rate: number
   readonly currencyCode: string
@@ -9,6 +7,5 @@ export type Entry = {
 
 export type Data = {
   readonly date: string
-  readonly labels: Labels
   readonly entries: Entry[]
 }

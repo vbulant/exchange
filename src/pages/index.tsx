@@ -31,7 +31,6 @@ const Home: NextPage = () => {
               isCollapsed={isCurrenciesTableExpanded}
             />
             <CurrenciesTable
-              headers={data.labels}
               entries={data.entries}
               date={data.date}
               isExpanded={isCurrenciesTableExpanded}
