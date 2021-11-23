@@ -4,7 +4,7 @@ export const Container = styled.div<{ isExpanded: boolean }>`
   width: fit-content;
   max-height: ${({ isExpanded }) => (isExpanded ? "500vh" : 0)};
   margin: 0 auto;
-  border: var(--border-width-sm) solid #ccc;
+  border: var(--border-width) solid #e9e9e9;
   border-bottom-width: 0;
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
@@ -13,6 +13,7 @@ export const Container = styled.div<{ isExpanded: boolean }>`
   opacity: ${({ isExpanded }) => (isExpanded ? 1 : 0)};
   transition: opacity var(--duration-toggle) var(--easing-toggle),
     max-height var(--duration-toggle) var(--easing-toggle);
+  background: var(--color-bg);
 `
 
 export const Header = styled.header`
@@ -72,7 +73,7 @@ export const Tbody = styled.tbody`
   tr:nth-child(2n + 1) {
     th,
     td {
-      background-color: var(--color-bg);
+      background-color: var(--color-white);
     }
   }
 

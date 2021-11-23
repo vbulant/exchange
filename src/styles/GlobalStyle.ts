@@ -7,7 +7,6 @@ const styles = createGlobalStyle`
     --color-text-muted: #7b868c;
     --color-bg: #f4f5f6;
     --color-action: #1d7ec3;
-    --color-action-border: #bcd2e1;
     --color-focus: #00bcf5;
     --color-error: #e0002d;
     --color-error-bg: #ffebef;
